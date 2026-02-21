@@ -1,53 +1,116 @@
-# Next.js & HeroUI Template
+# 🚀Commitive 
+## Own Your Commits.
+### A unified dashboard to track GitHub issues and pull requests across multiple repositories — in one clean interface.
 
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
+## 📌 Overview
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
+- Commitive is a developer-focused dashboard that aggregates your GitHub activity across repositories. Instead of switching between multiple repo tabs, you get a centralized view of:
 
-## Technologies Used
+- Open & closed pull requests
+- Assigned issues
+- Repository-wise contributions
+- Review status tracking
+- Built for individual developers and teams who want better visibility into their GitHub workflow.
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI v2](https://heroui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+## ✨ Features
 
-## How to Use
+- 🔎 Cross-repository issue tracking
+- 🔁 Pull request monitoring
+- 📊 Unified dashboard view
+- ⚡ Fast UI with Next.js App Router
 
-### Use the template with create-next-app
+## 🏗️ Tech Stack
 
-To create a new project based on this template using `create-next-app`, run the following command:
+- Frontend: Next.js (App Router)
+- UI: HeroUI + Tailwind CSS
+- Backend: Next.js API routes
+- Database ORM: Prisma
+- GitHub Integration: GitHub REST API
 
-```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
+## 📂 Project Structure
+```
+├── app/
+│   ├── api/
+│   ├── dashboard/
+│   └── generated/
+├── components/
+├── lib/
+├── prisma/
+│   └── schema.prisma
+└── package.json
 ```
 
-### Install dependencies
+- app/ → Application routes and API handlers
+- components/ → Reusable UI components
+- lib/ → Utilities and services
+- prisma/ → Database schema & migrations
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
+## ⚙️ Setup Instructions
+1. Clone the Repository
 ```bash
-npm install
+  git clone https://github.com/your-username/commitive.git
+  cd commitive
+```
+2. Install Dependencies
+``` npm install ```
+3. Configure Environment Variables
+4. Create a .env file in the root directory:
+
+- DATABASE_URL="your_database_url"
+- GITHUB_TOKEN="your_github_token"
+- NEXTAUTH_SECRET="your_secret"
+-  AUTH_URL="http://localhost:3000"
+
+4. Setup Prisma
+
+--- Generate the Prisma client:
+
+``` npx prisma generate ```
+
+Run database migrations:
+
+```npx prisma migrate dev```
+5. Start Development Server
+```npm run dev```
+
+Application runs at:
+
+http://localhost:3000
+
+🗄️ Prisma Notes
+
+- Keep schema.prisma inside /prisma
+- Run npx prisma generate after every schema change
+- Use npx prisma studio to inspect your database
+
+## 🔐 GitHub API Setup
+
+To fetch issues and PRs:
+- Create a GitHub Personal Access Token
+- Enable scopes:
+- repo
+- read:user
+- Add it to .env as GITHUB_TOKEN
+
+## 📈 Roadmap
+
+- Repository filtering
+- PR analytics dashboard
+- Real-time updates
+- Notifications system
+- Team-based views
+
+🛠 Available Scripts
+```
+npm run dev        # Start development server
+npm run build      # Build for production
+npm run start      # Run production server
+npx prisma studio  # Open Prisma database GUI
 ```
 
-### Run the development server
+## 🤝 Contributing
 
-```bash
-npm run dev
-```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
+- Fork the repository
+- Create a feature branch
+- Commit changes
+- Open a Pull Request
