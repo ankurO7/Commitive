@@ -1,5 +1,4 @@
-# 🚀Commitive 
-## Own Your Commits.
+# 🚀Commitive - Own Your Commits.
 ### A unified dashboard to track GitHub issues and pull requests across multiple repositories — in one clean interface.
 
 ## 📌 Overview
