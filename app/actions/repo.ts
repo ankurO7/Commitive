@@ -10,7 +10,6 @@ export async function addRepo(formData:FormData) {
         data: {
             name,
             url,
-            ownerId:"clxxxxx..."
         }
     })
     revalidatePath("/")
