@@ -10,6 +10,8 @@ export async function addRepo(formData:FormData) {
         data: {
             name,
             url,
+            githubId: 0,
+            fullName: name,
         }
     })
     revalidatePath("/")
