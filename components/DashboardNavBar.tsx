@@ -53,7 +53,7 @@ export default function DashboardNavbar({ user }: { user: UserProps }) {
               key="logout" 
               color="danger" 
               className="text-danger"
-              onPress={() => signOut({ callbackUrl: "/login" })}
+              onPress={() => signOut({ callbackUrl: "/" })}
             >
               Log Out
             </DropdownItem>
