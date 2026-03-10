@@ -4,6 +4,7 @@ import { Card, CardHeader, CardBody} from "@heroui/card";
 import {Chip }from "@heroui/chip";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
+import RefreshButton from "@/components/Refresh";
 
 // TypeScript interfaces for the GitHub API response
 interface GitHubIssue {
@@ -70,7 +71,7 @@ export default async function DashboardPage() {
             Welcome back, {session.user.name}. Here are your open PRs and Issues.
           </p>
         </div>
-        <Button color="primary" variant="flat">Refresh</Button>
+        <RefreshButton />
       </header>
 
       {Object.keys(groupedData).length === 0 ? (
