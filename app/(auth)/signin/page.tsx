@@ -26,7 +26,7 @@ export default function AuthPage() {
       setError(result.error);
     } else if (result?.success) {
       setSelected("login"); // Switch to login tab on success
-      setError("Account created! Please log in."); // Temporarily use error state for success message
+      setError("Account created!! Please log in."); // Temporarily use error state for success message
     }
     setIsLoading(false);
   }
