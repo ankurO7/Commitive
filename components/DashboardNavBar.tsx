@@ -43,12 +43,6 @@ export default function DashboardNavbar({ user }: { user: UserProps }) {
               <p className="font-semibold">Signed in as</p>
               <p className="font-semibold text-primary truncate">{user?.email}</p>
             </DropdownItem>
-            <DropdownItem key="settings" href="/dashboard/settings">
-              Settings
-            </DropdownItem>
-            <DropdownItem key="help_and_feedback">
-              Help & Feedback
-            </DropdownItem>
             <DropdownItem 
               key="logout" 
               color="danger" 
