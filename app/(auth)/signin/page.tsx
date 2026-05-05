@@ -6,33 +6,6 @@ import { signIn } from "next-auth/react";
 export default function AuthPage() {
   const [isLoading, setIsLoading] = useState(false);
 
-  // Client wrapper for Sign Up
-  async function handleSignUp(formData: FormData) {
-    setIsLoading(true);
-    setError(null);
-    const result = await signUpAction(formData);
-    
-    if (result?.error) {
-      setError(result.error);
-    } else if (result?.success) {
-      setSelected("login"); // Switch to login tab on success
-      setError("Account created!! Please log in."); // Temporarily use error state for success message
-    }
-    setIsLoading(false);
-  }
-
-  // Client wrapper for Sign In
-  async function handleSignIn(formData: FormData) {
-    setIsLoading(true);
-    setError(null);
-    const result = await signInAction(formData);
-    
-    if (result?.error) {
-      setError(result.error);
-    }
-    setIsLoading(false);
-  }
-
   return (
     <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center px-4 relative overflow-hidden">
 
