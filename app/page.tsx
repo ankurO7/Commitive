@@ -51,7 +51,7 @@ export default function CommitiveLandingPage() {
           </h1>
 
           <p className="relative text-lg text-white/50 max-w-xl mb-10 leading-relaxed">
-            Commitive tracks your open-source contributions, lists your active PRs and issues by priority, and lets you jump straight into the action—no endless scrolling required.
+            One dashboard for every PR, issue, and repo you care about. No noise, no context switching — just your open-source work, ready to act on.
           </p>
 
           <div className="relative flex flex-col sm:flex-row gap-3">
