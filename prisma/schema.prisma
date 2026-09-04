@@ -1,31 +1,30 @@
 generator client {
-  provider = "prisma-client-js"
-  engineType= "binary"
-  output= "../app/generated/prisma/client"
+  provider   = "prisma-client-js"
+  engineType = "binary"
+  output     = "../app/generated/prisma/client"
 }
 
 datasource db {
   provider = "postgresql"
 }
 
-
 model User {
   id            String    @id @default(cuid())
-  name          String?   
+  name          String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  password      String?   
+  password      String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
   // Relations
-  accounts      Account[]
-  sessions      Session[]
-  issues        Issue[]
-  prs           PullRequest[]
+  accounts     Account[]
+  sessions     Session[]
+  issues       Issue[]
+  prs          PullRequest[]
+  trackedRepos UserRepository[]
 }
-
 
 model Account {
   id                String  @id @default(cuid())
@@ -54,51 +53,60 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-
 model Repository {
-  id          String @id @default(cuid())
-  githubId    Int    @unique 
-  name        String 
-  fullName    String 
-  url         String
-  
-  issues      Issue[]
-  prs         PullRequest[]
+  id       String @id @default(cuid())
+  githubId Int    @unique
+  name     String
+  fullName String
+  url      String
+
+  issues    Issue[]
+  prs       PullRequest[]
+  trackedBy UserRepository[]
 }
 
 model Issue {
-  id          String @id @default(cuid())
-  githubId    Int    @unique // GitHub's internal ID
-  number      Int    // The issue number (e.g., #123)
-  title       String
-  status      String // "open" or "closed"
-  url         String // The URL to hop directly to GitHub
-  priority    Int    @default(0) // Commitive Core Feature: Allows custom sorting
+  id       String @id @default(cuid())
+  githubId Int    @unique // GitHub's internal ID
+  number   Int // The issue number (e.g., #123)
+  title    String
+  status   String // "open" or "closed"
+  url      String // The URL to hop directly to GitHub
+  priority Int    @default(0) // Commitive Core Feature: Allows custom sorting
 
-  repoId      String
-  repository  Repository @relation(fields: [repoId], references: [id], onDelete: Cascade)
-  authorId    String
-  author      User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  repoId     String
+  repository Repository @relation(fields: [repoId], references: [id], onDelete: Cascade)
+  authorId   String
+  author     User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-
 model PullRequest {
-  id          String   @id @default(cuid())
-  githubId    Int      @unique
-  number      Int
-  title       String
-  status      String   // "open", "closed", or "merged"
-  url         String   
-  priority    Int      @default(0) // Commitive Core Feature: Allows custom sorting
-  
-  repoId      String
-  repository  Repository @relation(fields: [repoId], references: [id], onDelete: Cascade)
-  authorId    String
-  author      User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  id       String @id @default(cuid())
+  githubId Int    @unique
+  number   Int
+  title    String
+  status   String // "open", "closed", or "merged"
+  url      String
+  priority Int    @default(0) // Commitive Core Feature: Allows custom sorting
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  repoId     String
+  repository Repository @relation(fields: [repoId], references: [id], onDelete: Cascade)
+  authorId   String
+  author     User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserRepository {
+  id           String   @id @default(cuid())
+  userId       String
+  repositoryId String
+  createdAt    DateTime @default(now())
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  repository Repository @relation(fields: [repositoryId], references: [id], onDelete: Cascade)
 }
